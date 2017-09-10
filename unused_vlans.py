@@ -31,8 +31,8 @@ for line in arp_file:
     line = line.split(',')
     if int(line[-1]) <= 2:                                               # This will get the last item of the list, also need to strip newline char
         print("YES")
-        output = open('unused_vlans.txt', 'w')
-        output.write(",".join(line + '\n'))
+        output = open('unused_vlans.txt', 'a')
+        output.write(",".join(line))
         output.close()
 
 arp_file.close()                                                    # Don't forget to close the file after reading!
