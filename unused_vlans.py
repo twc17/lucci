@@ -29,13 +29,12 @@ arp_file = open(args.input_arp_file, 'r')
 
 for line in arp_file:
     line = line.split(',')
-    if int(line[-1]) <= 2:                                               # This will get the last item of the list, also need to strip newline char
-        print("YES")
+    if int(line[-1]) <= 2:                                               
         output = open('unused_vlans.txt', 'a')
         output.write(",".join(line))
         output.close()
 
-arp_file.close()                                                    # Don't forget to close the file after reading!
+arp_file.close()                                                    
 
 # Time to build the email
 # msg = MIMEMultipart()
