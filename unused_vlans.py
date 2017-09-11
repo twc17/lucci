@@ -2,14 +2,17 @@
 
 # Author: Troy W. Caro <twc17@pitt.edu>
 # Date: Sep 8, 2017 
-# Version: 1.0.0
+# Version: 1.0.1
 #
 # Purpose:
 #   This script uses the output file generated from vlan_usage_via_arp_entries.pl
 #   It will then output all of the VLANs with 2 or less entries in the ARP table
 #
+# Dependencies:
+#   python version 2.6+
+#
 # Usage:
-#   python3 ununsed_vlans.py FILE_OF_ARP_ENTRIES.log
+#   python ununsed_vlans.py FILE_OF_ARP_ENTRIES
 #
 # Note:
 #   Not using any of the mail stuff yet
@@ -25,7 +28,6 @@ parser.add_argument('input_arp_file', metavar='FILE', help="Log file containing 
 args = parser.parse_args()
 
 arp_file = open(args.input_arp_file, 'r')
-
 
 for line in arp_file:
     line = line.split(',')
