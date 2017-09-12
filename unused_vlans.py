@@ -39,8 +39,30 @@ for line in arp_file:
 arp_file.close()                                                    
 
 # Time to build the email
-# msg = MIMEMultipart()
-# msg['Subject'] = "Unused VLANs"
-# msg['From'] = "nocjob@tsunami.ns.pitt.edu"
-# msg['To'] = "pittnet-techs-l@list.pitt.edu"
+fromaddr = "nobjob@tsunami.ns.pitt.edu"
+toaddr = "pittnet-techs-l@list.pitt.edu"
 
+msg = MIMEMultipart()
+msg['Subject'] = "Unused VLANs"
+msg['From'] = fromaddr
+msg['To'] = toaddr
+
+boyd = "Attached is a list of VLANs that have less than two or less entries in the ARP table"
+
+msg.attach(MIMEText(body, 'plain'))
+
+filename = "unused_vlans.txt"
+attachemnt = open("unused_vlans.txt", 'rb')
+
+part = MIMEBase('application', 'octet-stream')
+part.set_payload((attachment).read())
+encoders.encode_base64(part)
+part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
+ 
+msg.attach(part)
+
+server = smtplib.SMTP('smtp.pitt.edu', 25)
+text = msg.as_string()
+server.sendmail(fromaddr, toaddr, text)
+server.quit()
+attachment.close()
