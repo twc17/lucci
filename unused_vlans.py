@@ -20,6 +20,10 @@ import sys
 import argparse
 import smtplib
 
+# Packages
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 parser = argparse.ArgumentParser(description='Extract unused VLANs from ARP entry log file')
 parser.add_argument('input_arp_file', metavar='FILE', help="Log file containing number of ARP entries per VLAN") 
 args = parser.parse_args()
@@ -44,7 +48,7 @@ msg['Subject'] = "Unused VLANs"
 msg['From'] = fromaddr
 msg['To'] = toaddr
 
-boyd = "Attached is a list of VLANs that have less than two entries in the ARP table"
+body = "Attached is a list of VLANs that have less than two entries in the ARP table"
 
 msg.attach(MIMEText(body, 'plain'))
 
@@ -67,4 +71,4 @@ try:
     server.quit()
 except Exception as e:
         print(e)
-attachment.close()
+# attachment.close()
