@@ -40,14 +40,14 @@ arp_file.close()
 
 # Time to build the email
 fromaddr = "nobjob@tsunami.ns.pitt.edu"
-toaddr = "pittnet-techs-l@list.pitt.edu"
+toaddr = "twc17@pitt.edu"
 
 msg = MIMEMultipart()
 msg['Subject'] = "Unused VLANs"
 msg['From'] = fromaddr
 msg['To'] = toaddr
 
-boyd = "Attached is a list of VLANs that have less than two or less entries in the ARP table"
+boyd = "Attached is a list of VLANs that have less than two entries in the ARP table"
 
 msg.attach(MIMEText(body, 'plain'))
 
@@ -63,6 +63,11 @@ msg.attach(part)
 
 server = smtplib.SMTP('smtp.pitt.edu', 25)
 text = msg.as_string()
-server.sendmail(fromaddr, toaddr, text)
-server.quit()
+
+# Try to send it!
+try:
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
+except Exception as e:
+        print(e)
 attachment.close()
