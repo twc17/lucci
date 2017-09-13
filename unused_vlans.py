@@ -2,7 +2,7 @@
 
 # Author: Troy W. Caro <twc17@pitt.edu>
 # Date: Sep 8, 2017 
-# Version: 1.0.1
+# Version: 1.1.1
 #
 # Purpose:
 #   This script uses the output file generated from vlan_usage_via_arp_entries.pl
@@ -13,9 +13,6 @@
 #
 # Usage:
 #   python ununsed_vlans.py FILE_OF_ARP_ENTRIES
-#
-# Note:
-#   Not using any of the mail stuff yet
 
 # Imports
 import os
@@ -51,15 +48,15 @@ boyd = "Attached is a list of VLANs that have less than two entries in the ARP t
 
 msg.attach(MIMEText(body, 'plain'))
 
-filename = "unused_vlans.txt"
-attachemnt = open("unused_vlans.txt", 'rb')
+# filename = "unused_vlans.txt"
+# attachemnt = open("unused_vlans.txt", 'rb')
 
-part = MIMEBase('application', 'octet-stream')
-part.set_payload((attachment).read())
-encoders.encode_base64(part)
-part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
+# part = MIMEBase('application', 'octet-stream')
+# part.set_payload((attachment).read())
+# encoders.encode_base64(part)
+# part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
  
-msg.attach(part)
+# msg.attach(part)
 
 server = smtplib.SMTP('smtp.pitt.edu', 25)
 text = msg.as_string()
