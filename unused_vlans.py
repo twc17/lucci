@@ -22,7 +22,10 @@ import smtplib
 
 # Packages
 from email.mime.text import MIMEText
+from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
+from email.encoders import encode_base64
+
 
 parser = argparse.ArgumentParser(description='Extract unused VLANs from ARP entry log file')
 parser.add_argument('input_arp_file', metavar='FILE', help="Log file containing number of ARP entries per VLAN") 
@@ -52,15 +55,15 @@ body = "Attached is a list of VLANs that have less than two entries in the ARP t
 
 msg.attach(MIMEText(body, 'plain'))
 
-# filename = "unused_vlans.txt"
-# attachemnt = open("unused_vlans.txt", 'rb')
+filename = "unused_vlans.txt"
+attachment = open("unused_vlans.txt", 'rb')
 
-# part = MIMEBase('application', 'octet-stream')
-# part.set_payload((attachment).read())
-# encoders.encode_base64(part)
-# part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
+part = MIMEBase('application', 'octet-stream')
+part.set_payload((attachment).read())
+encode_base64(part)
+part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
  
-# msg.attach(part)
+msg.attach(part)
 
 server = smtplib.SMTP('smtp.pitt.edu', 25)
 text = msg.as_string()
@@ -71,4 +74,4 @@ try:
     server.quit()
 except Exception as e:
         print(e)
-# attachment.close()
+attachment.close()
