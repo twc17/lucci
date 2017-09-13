@@ -21,7 +21,7 @@
 import os
 import sys
 import argparse
-# import smtplib
+import smtplib
 
 parser = argparse.ArgumentParser(description='Extract unused VLANs from ARP entry log file')
 parser.add_argument('input_arp_file', metavar='FILE', help="Log file containing number of ARP entries per VLAN") 
