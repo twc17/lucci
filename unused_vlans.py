@@ -22,10 +22,7 @@ import smtplib
 
 # Packages
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from email.encoders import encode_base64
-
 
 parser = argparse.ArgumentParser(description='Extract unused VLANs from ARP entry log file')
 parser.add_argument('input_arp_file', metavar='FILE', help="Log file containing number of ARP entries per VLAN") 

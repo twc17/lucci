@@ -29,4 +29,3 @@ args = parser.parse_args()
 router_file = open(args.input_router_file, 'r')
 
 
-
