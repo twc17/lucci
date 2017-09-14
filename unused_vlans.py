@@ -43,7 +43,7 @@ for line in arp_file:
 arp_file.close()                                                    
 
 # Time to build the email
-fromaddr = "nobjob@tsunami.ns.pitt.edu"
+fromaddr = "unused_vlans@tsunami.ns.pitt.edu"
 toaddr = "twc17@pitt.edu"
 
 msg = MIMEMultipart()
@@ -58,10 +58,8 @@ msg.attach(MIMEText(body, 'plain'))
 filename = "unused_vlans.txt"
 attachment = open("unused_vlans.txt", 'rb')
 
-part = MIMEBase('application', 'octet-stream')
-part.set_payload((attachment).read())
-encode_base64(part)
-part.add_header('Content-Disposition', "attachment: filename= %s" % filename)
+part = MIMEText(attachment.read())
+part.add_header('Content-Disposition', "attachment", filename=filename)
  
 msg.attach(part)
 
