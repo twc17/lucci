@@ -1,0 +1,13 @@
+dictionary = {
+	'core1' : {
+		'context1' : [ (acl1, nog1), (acl2, nog2), ... ], 
+		'context2' : [ (acl1, nog1), (acl2, nog2), ... ], 
+		...
+	},
+	'core2' : {
+		'context1' : [ (acl1, nog1), (acl2, nog2), ... ], 
+		'context2' : [ (acl1, nog1), (acl2, nog2), ... ], 
+		...
+	},
+	....
+}
