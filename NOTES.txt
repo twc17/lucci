@@ -11,3 +11,19 @@ dictionary = {
 	},
 	....
 }
+
+dictionary = {}
+
+# go over each line of input file
+for line in file;
+	# core,context,acl,nog
+	line = line.split(',')
+
+	# if core is in dict
+	if line[0] in dictionary;
+		# if context is in core dict
+		if line[1] in dictionary[line[0]];
+			# add (acl, nog)
+			dictionary[line[0]].append((line[2], line[3]))
+		# else add new context to core dict
+		else;
