@@ -70,10 +70,11 @@ def build_config(cn, names):
 
 def sans():
     names = []
+    t = 0
     print("Please enter the SANs")
-    for i in range(2000):
+    while True:
         z = raw_input()
-        t = i + 1
+        t += 1
         if z != "":
             names.append("DNS." + str(t) + " = " + z.strip())
         else:
