@@ -35,6 +35,16 @@ def build_arg_parser():
                         action='store',
                         help='Directory to output files to')
 
+    parser.add_argument('-c', '--common-name',
+                        required=False,
+                        action='store',
+                        help='Common Name for cert')
+
+    parser.add_argument('-s', '--sans',
+                        required=False,
+                        action='store',
+                        help='Filename containing list of SANs for CN')
+
     return parser.parse_args()
 
 
@@ -94,9 +104,9 @@ def main():
     csr_name = cn + '.csr'
     key_name = cn + '.key'
 
-    print csr_name
-    print key_name
-    print new_cfg
+    print os.getcwd() + "/" + csr_name
+    print os.getcwd() + "/" + key_name
+    print os.getcwd() + "/" + new_cfg
 
 
 # Run
